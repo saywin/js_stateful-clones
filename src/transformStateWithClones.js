@@ -20,8 +20,12 @@ function transformStateWithClones(state, actions) {
         delToObject(stateCopy, action.keysToRemove);
         break;
 
-      default:
+      case 'clear':
         clearObject(stateCopy);
+        break;
+
+      default:
+        throw new Error('Not a valid action');
     }
     stateArray.push({ ...stateCopy });
   }
